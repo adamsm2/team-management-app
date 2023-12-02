@@ -8,7 +8,9 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -22,8 +24,11 @@ class TeamTest {
 
     @BeforeEach
     void setUp() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Adam\\Desktop\\chromedriver.exe");
-        webDriver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--headless");
+        webDriver = new ChromeDriver(options);
         webDriver.manage().window().maximize();
         webDriver.get(TEAMS_ENDPOINT_ADDRESS);
     }
@@ -34,6 +39,7 @@ class TeamTest {
     }
 
     @Test
+    @DirtiesContext
     void givenTeamData_whenCreateTeam_thenTeamIsCreated() throws Exception {
         String teamName = "team1";
         String abbreviation = "t1";
@@ -49,6 +55,7 @@ class TeamTest {
     }
 
 /*    @Test
+    @DirtiesContext
     void failedTest() throws Exception {
         String teamName = "team1";
         String abbreviation = "t1";
