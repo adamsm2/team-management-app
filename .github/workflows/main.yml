@@ -1,0 +1,38 @@
+name: CI
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Java version
+        uses: actions/setup-java@v1
+        with:
+          java-version: '17'
+
+      - name: Build and test with Maven
+        run: mvn clean test
+
+      - name: GitHub Action to create an Azure DevOps Bug Workitem when a workflow fails
+        uses: stefanstranger/azuredevops-bug-action@1.1
+        with:
+          OrganizationName: "mwo5"
+          PAT: "PAT"
+          ProjectName: "mwo-projekt"
+          AreaPath: "mwo-projekt"
+          IterationPath: "mwo-projekt"
+          GithubToken: "GithubToken"
+          WorkflowFileName: "main.yml"
+        env:
+          PAT: ${{ secrets.PAT}}
+          GithubToken: ${{ secrets.githubtoken}}
