@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+
+    <title>Create a player</title>
+
+    <!-- Bootstrap CSS -->
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
+
+    <link media="all" rel="stylesheet" th:href="@{/styles.css}" type="text/css"/>
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/teams">Teams</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/players">Players</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container d-flex align-items-center flex-column mb-4">
+    <form class="form" th:action="@{'/players/create'}" th:method="${'POST'}" th:object="${createPlayerForm}">
+        <fieldset>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input class="form-control" id="name"
+                       th:field="*{name}"
+                       type="text"/>
+                <div class="alert alert-warning" th:errors="*{name}" th:if="${#fields.hasErrors('name')}"></div>
+            </div>
+            <div class="form-group">
+                <label for="surname">Surname:</label>
+                <input class="form-control" id="surname"
+                       th:field="*{surname}"
+                       type="text"/>
+                <div class="alert alert-warning" th:errors="*{surname}"
+                     th:if="${#fields.hasErrors('surname')}"></div>
+            </div>
+            <div class="form-group">
+                <label for="number">Number:</label>
+                <input class="form-control" id="number"
+                       th:field="*{number}"
+                       type="text"/>
+                <div class="alert alert-warning" th:errors="*{number}"
+                     th:if="${#fields.hasErrors('number')}"></div>
+            </div>
+            <div class="form-group">
+                <label for="teamName">Team name:</label>
+                <input class="form-control" id="teamName"
+                       th:field="*{teamName}"
+                       type="text"/>
+                <div class="alert alert-warning" th:errors="*{teamName}"
+                     th:if="${#fields.hasErrors('teamName')}"></div>
+            </div>
+            <div class="form-group">
+                <input class="btn btn-success" id="submitButton" th:value="Create" type="submit">
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<footer id="footer">
+    <h4 style="color:white; font-size: 12px;">Team management app</h4>
+</footer>
+
+<script crossorigin="anonymous"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

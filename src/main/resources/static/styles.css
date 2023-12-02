@@ -1,0 +1,16 @@
+#footer {
+    background-color: rgb(52, 58, 64);
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    padding: 5px;
+}
+
+.table td {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
