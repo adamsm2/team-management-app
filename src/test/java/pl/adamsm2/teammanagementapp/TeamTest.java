@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -38,6 +39,7 @@ class TeamTest {
     }
 
     @Test
+    @DirtiesContext
     void givenTeamData_whenCreateTeam_thenTeamIsCreated() throws Exception {
         String teamName = "team1";
         String abbreviation = "t1";
@@ -53,6 +55,7 @@ class TeamTest {
     }
 
     @Test
+    @DirtiesContext
     void failedTest() throws Exception {
         String teamName = "team1";
         String abbreviation = "t1";
