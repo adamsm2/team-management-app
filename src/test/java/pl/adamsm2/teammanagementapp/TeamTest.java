@@ -22,7 +22,6 @@ class TeamTest {
 
     @BeforeEach
     void setUp() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Adam\\Desktop\\chromedriver.exe");
         webDriver = new ChromeDriver();
         webDriver.manage().window().maximize();
         webDriver.get(TEAMS_ENDPOINT_ADDRESS);
