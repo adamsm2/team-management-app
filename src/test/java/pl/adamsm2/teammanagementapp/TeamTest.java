@@ -48,7 +48,7 @@ class TeamTest {
         assertThat(teamNameElement.isDisplayed()).isTrue();
     }
 
-/*    @Test
+    @Test
     void failedTest() throws Exception {
         String teamName = "team1";
         String abbreviation = "t1";
@@ -61,6 +61,6 @@ class TeamTest {
         Thread.sleep(500);
         WebElement teamNameElement = webDriver.findElement(By.xpath("//*[contains(text(),'" + teamName + "')]"));
         assertThat(teamNameElement.isDisplayed()).isFalse();
-    }*/
+    }
 
 }
