@@ -25,6 +25,7 @@ jobs:
 
       - name: GitHub Action to create an Azure DevOps Bug Workitem when a workflow fails
         uses: stefanstranger/azuredevops-bug-action@1.1
+        if: failure()
         with:
           OrganizationName: "mwo5"
           PAT: "PAT"
