@@ -20,7 +20,7 @@ public class PlayerMapper {
                 .name(player.getName())
                 .surname(player.getSurname())
                 .number(player.getNumber())
-                .teamName(player.getTeam().getName())
+                .teamName(player.getTeam() != null ? player.getTeam().getName() : "")
                 .build();
     }
 
